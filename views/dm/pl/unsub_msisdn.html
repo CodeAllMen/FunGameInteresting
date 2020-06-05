@@ -1,0 +1,66 @@
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=360" />
+    <title>Unsubscribe</title>
+    <link type="text/css" rel="stylesheet" href="/static/css/unsub.css" />
+    <script type="text/javascript" src="./js/index.js"></script>
+    <!-- <script type="text/javascript" src="./js/min.js"></script> -->
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.js"
+      integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+      crossorigin="anonymous"></script>
+    <style type="text/css"></style>
+  </head>
+
+  <body>
+    <div class="container">
+        <!-- <img src="/static/img/logo.png"> -->
+        <h4 style="text-align: center;font-size: 28px">Anuluj subskrypcję</h4>
+
+      <div class="content">
+        <p class="m-b">
+                Podając swój numer telefonu komórkowego, potwierdzasz, że chcesz zrezygnować z subskrypcji
+        </p>
+        <!-- <input class="fill_num_test m-b" value="0031" readonly /> -->
+        <input class="fill_num m-b" id="phone" placeholder="48xxxxxxxxx" />
+        <a type="button" class="unsub" onclick="unsub()">Anuluj subskrypcję</a>
+        <p class="last">*Voer uw nummer w met de landcode (np.48 w de PL)</p>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="sub">
+
+        <p style="font-weight: Bold;font-size: 12px">
+          <a href="/dm/pl/tnc" style="color: #0611dc">Warunki</a> -
+          <a href="/dm/pl/help" style="color: #0611dc">Kontakt i Rezygnacja z subskrypcji</a> -
+          <a href="/dm/pl/privacy" style="color: #0611dc">Oświadczenie o prywatności</a>
+          {{/*<a href="dm/pl/disclaimer" style="color: #0611dc">Zrzeczenie się</a>*/}}
+        </p>
+
+      </div>
+    </div>
+  </body>
+  <script type="text/javascript">
+    function closeWin() {
+      if (
+        navigator.userAgent.indexOf("Firefox") != -1 ||
+        navigator.userAgent.indexOf("Chrome") != -1
+      ) {
+        window.location.href = "about:blank";
+        window.close();
+      } else {
+        window.opener = null;
+        window.open("", "_self");
+        window.close();
+      }
+    }
+
+    function unsub() {
+      var phone =  $("#phone").val();
+      window.location.href =
+        "http://pl.leadernet-hk.com/msisdn/unsub?msisdn=" + phone;
+    }
+  </script>
+</html>

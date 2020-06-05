@@ -1,0 +1,65 @@
+<html class=" touch" lang="zh" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <meta name="theme-color" content="#c52626">
+    <title>Interesting Game Studio</title>
+    <link rel="stylesheet" media="screen" href="/static/css/page2.css">
+    <link rel="stylesheet" media="screen" href="/static/css/page.css">
+
+    <link rel="stylesheet" media="screen" href="/static/css/index.css">
+</head>
+
+<body class="items tag games-active" data-controller="Items" data-action="tag" data-filter-compatibility-games="true"
+    data-remove-intersection-links="true">
+
+    <div class="features-overlay" onclick="location.href='/admin/features';"></div>
+    <nav class="navbar navbar-inverse" style="height: 62px; position: fixed;width: 100%;">
+        <center><img src="/static/img/logo.png" style="margin-top: 20px; width: 85%;max-width: 378px;"></center>
+    </nav>
+
+    <div class="container">
+        <div class="main tag">
+            <div class="box items-grid no-background">
+                <div class="row">
+                    <div class="row" id="items_container" data-base-url="/tags/Touchscreen" data-max-page="12"
+                        data-infinite-scrolling="true">
+                        {{range .games}}
+                        <div class="item thumb videobox" data-label-ids="1 Player,Doctor,Free Game,Y8 Account,Y8 Achievements,Y8 Save,Y8 Screenshot,Simulation,HTML5,Android game,iPad,iPhone,Mobile,Touchscreen">
+                            <div class="thumbarea">
+                                <div class="microthumb"></div>
+                                <a href="/game/{{.Id}}">
+                                    <div class="thumb-img-container">
+                                        <img class="thumb playable" alt="Knee Surgery Simulator" src="https://s3-us-west-1.amazonaws.com/static-soource/game/img/{{.Img}}/img/game.png">
+                                    </div>
+                                </a>
+                            </div>
+                            <a href="/game/{{.Id}}">
+                                <div class="infos">
+                                    <p class="title ltr">{{.Name}}</p>
+                                    <div class="technology" style="display: block;">
+                                        <p class="html">HTML5 Game</p>
+                                    </div>
+                                    <p class="plays-count">
+                                        {{.PlayNum}}
+                                    </p>
+                                </div>
+                            </a>
+                        </div>
+                        {{end}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <center><button style="border: solid 1.2px #040604;
+        font-size: 19px;
+        margin-bottom: 12px;
+        background: #f1a744;
+        border-radius: 11px;" onclick="location.href='/unsub/page'">Zrušit předplatné</button></center>
+    <br>
+</body>
+
+</html>
