@@ -9,6 +9,7 @@ type Games struct {
 	Url     string `orm:"size(100)"`
 	Img     string `orm:"size(100)"`
 	Name    string `orm:"size(100)"`
+	NameSk  string `orm:"size(100)" json:"name_sk"`
 	PlayNum int
 }
 
