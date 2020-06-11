@@ -13,26 +13,28 @@
 </head>
 
 <body class="items tag games-active" data-controller="Items" data-action="tag" data-filter-compatibility-games="true"
-    data-remove-intersection-links="true">
+      data-remove-intersection-links="true">
 
-    <div class="features-overlay" onclick="location.href='/admin/features';"></div>
-    <nav class="navbar navbar-inverse" style="height: 62px; position: fixed;width: 100%;">
-        <center><img src="/static/img/logo.png" style="margin-top: 20px; width: 85%;max-width: 378px;"></center>
-    </nav>
+<div class="features-overlay" onclick="location.href='/admin/features';"></div>
+<nav class="navbar navbar-inverse" style="height: 62px; position: fixed;width: 100%;">
+    <center><img src="/static/img/logo.png" style="margin-top: 20px; width: 85%;max-width: 378px;"></center>
+</nav>
 
-    <div class="container">
-        <div class="main tag">
-            <div class="box items-grid no-background">
-                <div class="row">
-                    <div class="row" id="items_container" data-base-url="/tags/Touchscreen" data-max-page="12"
-                        data-infinite-scrolling="true">
-                        {{range .games}}
-                        <div class="item thumb videobox" data-label-ids="1 Player,Doctor,Free Game,Y8 Account,Y8 Achievements,Y8 Save,Y8 Screenshot,Simulation,HTML5,Android game,iPad,iPhone,Mobile,Touchscreen">
+<div class="container">
+    <div class="main tag">
+        <div class="box items-grid no-background">
+            <div class="row">
+                <div class="row" id="items_container" data-base-url="/tags/Touchscreen" data-max-page="12"
+                     data-infinite-scrolling="true">
+                    {{range .games}}
+                        <div class="item thumb videobox"
+                             data-label-ids="1 Player,Doctor,Free Game,Y8 Account,Y8 Achievements,Y8 Save,Y8 Screenshot,Simulation,HTML5,Android game,iPad,iPhone,Mobile,Touchscreen">
                             <div class="thumbarea">
                                 <div class="microthumb"></div>
                                 <a href="/game/{{.Id}}">
                                     <div class="thumb-img-container">
-                                        <img class="thumb playable" alt="Knee Surgery Simulator" src="https://s3-us-west-1.amazonaws.com/static-soource/game/img/{{.Img}}/img/game.png">
+                                        <img class="thumb playable" alt="Knee Surgery Simulator"
+                                             src="https://s3-us-west-1.amazonaws.com/static-soource/game/img/{{.Img}}/img/game.png">
                                     </div>
                                 </a>
                             </div>
@@ -48,18 +50,28 @@
                                 </div>
                             </a>
                         </div>
-                        {{end}}
-                    </div>
+                    {{end}}
                 </div>
             </div>
         </div>
     </div>
-    <center><button style="border: solid 1.2px #040604;
+</div>
+<center>
+    <button style="border: solid 1.2px #040604;
         font-size: 19px;
         margin-bottom: 12px;
         background: #f1a744;
-        border-radius: 11px;" onclick="location.href='/unsub/page'">odhlásiť</button></center>
-    <br>
+        border-radius: 11px;" onclick="location.href='/unsub/page'">odhlásiť
+    </button>
+</center>
+<br>
+<footer style="text-align: center">
+    <p class="service">
+        Vlastnik služby: Foxseek Media Limited, www.foxseek.com, 0800008304
+        SMS agregator pre Slovensko: goodgames, s.r.o. www.good-games.sk, 0948436649, info@good-games.sk
+    </p>
+</footer>
+
 </body>
 
 </html>
