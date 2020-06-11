@@ -1,10 +1,10 @@
 <html>
 
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta name="viewport" content="width=360" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=360"/>
     <title>Interesting GAMES</title>
-    <link rel="icon" href=" " type="image/x-icon" />
+    <link rel="icon" href=" " type="image/x-icon"/>
     <link type="text/css" rel="stylesheet" href="/static/css/game.css">
     <style>
         .myh {
@@ -18,9 +18,9 @@
 
         .btp {
             -webkit-font-smoothing: antialiased;
-            line-height: 1.2!important;
+            line-height: 1.2 !important;
             box-sizing: inherit;
-            font-size: 12px!important;
+            font-size: 12px !important;
             text-align: justify;
             margin-top: 10px;
         }
@@ -31,14 +31,14 @@
 <div class="container">
     <h2 class="myh">Interesting GAMES</h2>
     <div class="header">
-        <img src="/static/img/bg.png" />
+        <img src="/static/img/bg.png"/>
     </div>
     <div class="footer">
         <div class="sub">
             <p style="font-size:12px">
                 Zkontrolujte svou SMS a dokončete registraci
             </p>
-            <button class="buttonOne" id="submit_btn_mobile" onclick="location.href='/cz/welcome'">potvrdit</button>
+            <button class="buttonOne" id="submit_btn_mobile" >potvrdit</button>
 
         </div>
     </div>
@@ -47,7 +47,24 @@
 
 <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
 <script>
-$("")
+    $("#submit_btn_mobile").click(function () {
+        $.ajax({
+            url: '/cz/confirm_sms_ajax?msisdn={{.Msisdn}}',
+            type: 'GET',
+            data: {},
+            success: function (result) {
+                if (result.status === 0) {
+                    alert("Something is wrong, please try again")
+                } else {
+                    // alert("success")
+                    window.location.href = '/cz/welcome?msisdn={{.Msisdn}}'
+                }
+            }.bind(this),
+            error: function (error) {
+                console.log(error)
+            }
+        })
+    })
 </script>
 
 </html>

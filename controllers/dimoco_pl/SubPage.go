@@ -54,6 +54,8 @@ func (s *SubPage) Welcome() {
 }
 
 func (s *SubPage) ConfirmSMS() {
+	msisdn := s.GetString("msisdn")
+	s.Data["Msisdn"] = msisdn
 	s.TplName = "dm/ae/confirm_sms.html"
 }
 
@@ -63,7 +65,7 @@ func (s *SubPage) ConfirmSMSAjax() {
 	uid := models.CheckUser(msisdn)
 	if uid == "" {
 		s.Data["json"] = failedReply("Zkontrolujte svou SMS a dokončete registraci")
-	}else {
+	} else {
 		s.Data["json"] = successReply("")
 	}
 

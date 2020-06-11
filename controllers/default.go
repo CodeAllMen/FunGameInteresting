@@ -46,14 +46,14 @@ type GamePage struct {
 }
 
 func (c *GamePage) Get() {
-	id := c.Ctx.Input.Param(":id")
-	url := models.GetGamesUrl(id)
-	c.Redirect(url, 302)
-	// if c.GetSession("user") != nil {
-	// 	id := c.Ctx.Input.Param(":id")
-	// 	url := models.GetGamesUrl(id)
-	// 	c.Redirect(url, 302)
-	// } else {
-	// 	c.TplName = "login.html"
-	// }
+	// id := c.Ctx.Input.Param(":id")
+	// url := models.GetGamesUrl(id)
+	// c.Redirect(url, 302)
+	if c.GetSession("user") != nil {
+		id := c.Ctx.Input.Param(":id")
+		url := models.GetGamesUrl(id)
+		c.Redirect(url, 302)
+	} else {
+		c.TplName = "login.html"
+	}
 }
