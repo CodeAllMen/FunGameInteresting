@@ -4,7 +4,10 @@
 
 package dimoco_pl
 
-import "github.com/astaxie/beego"
+import (
+	"github.com/MobileCPX/FunGameInteresting/models"
+	"github.com/astaxie/beego"
+)
 
 type SubPage struct {
 	beego.Controller
@@ -48,4 +51,56 @@ func (s *SubPage) Privacy() {
 
 func (s *SubPage) Welcome() {
 	s.TplName = "dm/ae/welcome.html"
+}
+
+func (s *SubPage) ConfirmSMS() {
+	s.TplName = "dm/ae/confirm_sms.html"
+}
+
+func (s *SubPage) ConfirmSMSAjax() {
+	msisdn := s.GetString("msisdn")
+
+	uid := models.CheckUser(msisdn)
+	if uid == "" {
+		s.Data["json"] = failedReply("Zkontrolujte svou SMS a dokončete registraci")
+	}else {
+		s.Data["json"] = successReply("")
+	}
+
+	s.ServeJSON()
+}
+
+func (s *SubPage) Register() {
+	msisdn := s.GetString("msisdn")
+
+	// 将电话号码或者那个id存到数据库
+	user := models.Users{
+		UserName: msisdn,
+		Password: msisdn,
+		Sp:       "Dimoco",
+		Country:  "CZ",
+	}
+	models.RegistereUser(user)
+
+	s.Data["json"] = msisdn
+	s.ServeJSON()
+}
+
+type reply struct {
+	Status int    `json:"status"`
+	Desc   string `json:"desc"`
+}
+
+func successReply(desc string) *reply {
+	return &reply{
+		Status: 1,
+		Desc:   desc,
+	}
+}
+
+func failedReply(desc string) *reply {
+	return &reply{
+		Status: 0,
+		Desc:   desc,
+	}
 }

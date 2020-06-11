@@ -26,6 +26,9 @@ func init() {
 	beego.Router("/tnc", &dimoco_pl.SubPage{}, "*:Condition")
 	beego.Router("/help", &dimoco_pl.SubPage{}, "*:Help")
 	beego.Router("/privacy", &dimoco_pl.SubPage{}, "*:Privacy")
+	beego.Router("/cz/register_msisdn", &dimoco_pl.SubPage{}, "*:Register")
+	beego.Router("/cz/confirm_sms_ajax", &dimoco_pl.SubPage{}, "*:ConfirmSMSAjax")
+	beego.Router("/cz/confirm_sms", &dimoco_pl.SubPage{}, "*:ConfirmSMS")
 
 	beego.Router("/sv/lp", &slovenia.SubPage{}, "*:Lp")
 	beego.Router("/sv/tan", &slovenia.SubPage{}, "*:Tan")
