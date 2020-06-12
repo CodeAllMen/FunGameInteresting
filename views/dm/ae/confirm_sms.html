@@ -24,6 +24,10 @@
             text-align: justify;
             margin-top: 10px;
         }
+        .tnc {
+            text-align: -webkit-auto;
+            margin: 0 45px 10px 45px;
+        }
     </style>
 </head>
 
@@ -40,7 +44,24 @@
             </p>
             <button class="buttonOne" id="submit_btn_mobile" >potvrdit</button>
 
+
         </div>
+    </div>
+
+    <p class="tnc">Poplatek je <span style="font-size: 28px;">99,00 Kč </span> / týden(včetně DPH). Kliknutím na Přihlásit se souhlasíte s níže uvedenými podmínkami:<br>
+        - Placené předplatné začne automaticky každý týden.<br>
+        {{/*        - No commitment you can cancel anytime by sending C {{.key}} to {{.code}} <br>*/}}
+        {{/*        - The free trial is valid only for new subscribers*/}}
+        {{/*        - To get support, please contact: vas@kncee.com*/}}
+        <br/>
+        Tento závazek můžete kdykoli zrušit zasláním STOP CZ197 na 90440
+    </p>
+
+    <div style="text-align: center;font-size: 10px;">
+        Foxseek Media Limited<br>
+        Evidenční číslo: 1922945<br>
+        Registrační soud: Hongkong<br>
+        Registrační adresa: Unit B, 10/F Lee May Buliding 788-790 Nathan Road Mongkok Kowloon Hong Kong<br><br>
     </div>
 </div>
 </body>
@@ -54,7 +75,7 @@
             data: {},
             success: function (result) {
                 if (result.status === 0) {
-                    alert("Something is wrong, please try again")
+                    alert("Zkontrolujte svou SMS a dokončete registraci")
                 } else {
                     // alert("success")
                     window.location.href = '/cz/welcome?msisdn={{.Msisdn}}'
