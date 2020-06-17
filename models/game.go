@@ -38,3 +38,27 @@ func UpdateGames(id, nameSk string) {
 	}
 
 }
+
+func GetGameListByCategory(categoryId string) (list []Games, err error) {
+	db := orm.NewOrm()
+
+	_, err = db.QueryTable("games").Filter("category_id", categoryId).All(&list)
+
+	return
+}
+
+func UpdateGameCategory(gameId int64, categoryId int) (err error) {
+
+	db := orm.NewOrm()
+
+	user := Games{
+		Id: gameId,
+	}
+
+	user.CategoryId = categoryId
+
+	_, err = db.Update(&user, "category_id")
+
+	return
+
+}

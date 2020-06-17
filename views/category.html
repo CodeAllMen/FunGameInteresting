@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
     <meta name="theme-color" content="#c52626">
-    <title>Interesting Game Studio</title>
+    <title>{{.Title}}</title>
     <link rel="stylesheet" media="screen" href="/static/css/page2.css">
     <link rel="stylesheet" media="screen" href="/static/css/page.css">
 
@@ -27,7 +27,7 @@
             float: right;
         }
 
-        .category_container ul li a{
+        .category_container ul li a {
             color: #0b57a2;
         }
     </style>
@@ -48,14 +48,14 @@
             <ul>
                 {{range .CategoryList}}
 
-                        <li><a href="/category?category_id={{.Id}}">{{.Name}}&nbsp;</a></li>
+                    <li><a href="/category?category_id={{.Id}}">{{.Name}}&nbsp;</a></li>
 
                 {{end}}
             </ul>
         </div>
 
-        <div class="box items-grid no-background">
 
+        <div class="box items-grid no-background">
             <div class="row">
                 <div class="row" id="items_container" data-base-url="/tags/Touchscreen" data-max-page="12"
                      data-infinite-scrolling="true">

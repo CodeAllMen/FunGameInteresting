@@ -10,6 +10,19 @@ type MainController struct {
 	beego.Controller
 }
 
+func (c MainController) Prepare() {
+	var (
+		err          error
+		categoryList []models.CategoryModel
+	)
+
+	if categoryList, err = models.GetCategoryList(); err != nil {
+		fmt.Println(err)
+	}
+
+	c.Data["CategoryList"] = categoryList
+}
+
 func (c *MainController) Get() {
 	subID := c.GetString("subID")
 	if subID != "" {
@@ -46,14 +59,38 @@ type GamePage struct {
 }
 
 func (c *GamePage) Get() {
-	id := c.Ctx.Input.Param(":id")
-	url := models.GetGamesUrl(id)
-	c.Redirect(url, 302)
-	// if c.GetSession("user") != nil {
-	// 	id := c.Ctx.Input.Param(":id")
-	// 	url := models.GetGamesUrl(id)
-	// 	c.Redirect(url, 302)
-	// } else {
-	// 	c.TplName = "login.html"
-	// }
+	// id := c.Ctx.Input.Param(":id")
+	// url := models.GetGamesUrl(id)
+	// c.Redirect(url, 302)
+	if c.GetSession("user") != nil {
+		id := c.Ctx.Input.Param(":id")
+		url := models.GetGamesUrl(id)
+		c.Redirect(url, 302)
+	} else {
+		c.TplName = "login.html"
+	}
+}
+
+func (c *MainController) CategoryPage() {
+	var (
+		err      error
+		gameList []models.Games
+		category *models.CategoryModel
+	)
+
+	categoryId := c.GetString("category_id")
+	fmt.Println(categoryId)
+
+	if gameList, err = models.GetGameListByCategory(categoryId); err != nil {
+		fmt.Println(err)
+	}
+
+	if category, err = models.GetCategoryById(categoryId); err != nil {
+		fmt.Println(err)
+	}
+
+	c.Data["games"] = gameList
+	c.Data["Title"] = category.Name
+
+	c.TplName = "category.html"
 }

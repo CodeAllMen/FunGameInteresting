@@ -5,12 +5,13 @@ import (
 )
 
 type Games struct {
-	Id      int64  `orm:"pk;auto"`
-	Url     string `orm:"size(100)"`
-	Img     string `orm:"size(100)"`
-	Name    string `orm:"size(100)"`
-	NameSk  string `orm:"size(100)" json:"name_sk"`
-	PlayNum int
+	Id         int64  `orm:"pk;auto"`
+	Url        string `orm:"size(100)"`
+	Img        string `orm:"size(100)"`
+	Name       string `orm:"size(100)"`
+	NameSk     string `orm:"size(100)" json:"name_sk"`
+	CategoryId int    `json:"category_id"`
+	PlayNum    int
 }
 
 type Users struct {
@@ -22,5 +23,5 @@ type Users struct {
 }
 
 func init() {
-	orm.RegisterModel(new(Games), new(Users))
+	orm.RegisterModel(new(Games), new(Users), new(CategoryModel))
 }

@@ -11,6 +11,7 @@ import (
 func init() {
 	beego.Router("/", &controllers.MainController{})
 	beego.Router("/login", &controllers.LoginController{})
+	beego.Router("/category", &controllers.MainController{}, "Get:CategoryPage")
 
 	beego.Router("/registere/username", &controllers.RegisteredControllers{}) // 电话号码注册用户
 
@@ -57,4 +58,6 @@ func init() {
 	beego.Router("/h", &controllers.HelpPage{})
 	beego.Router("/p", &controllers.PrivacyPage{})
 	beego.Router("/t", &controllers.TNCPage{})
+
+	beego.Router("/help/divide_category", &controllers.HelpController{}, "Get:DivideCategory")
 }
